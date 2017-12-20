@@ -5,7 +5,7 @@ jobs:
       - image: ubuntu:16.04
     steps:
       - checkout
-      - run: 'apt-get update && apt-install -y curl apt-transport-https'
+      - run: 'apt-get update && apt install -y curl apt-transport-https'
       - run: 'curl https://sorah.jp/packaging/debian/3F0F56A8.pub.txt | apt-key add -'
       - run: "echo 'deb https://cache.ruby-lang.org/lab/sorah/deb/ xenial main' >> /etc/apt/sources.list.d/misc.list && apt-get update"
       - run: "apt-get install -y ruby2.5"
