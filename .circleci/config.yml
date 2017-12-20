@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu:16.04
+    steps:
+      - checkout
+      - run:
+          name: apt install 
+          command: 'apt-get update && apt-install -y curl apt-transport-https'
+      - run:
+          name: apt-key
+          command: 'curl https://sorah.jp/packaging/debian/3F0F56A8.pub.txt | apt-key add -'
+      - run:
+          name: apt-update
+          command: "echo 'deb https://cache.ruby-lang.org/lab/sorah/deb/ xenial main' >> /etc/apt/sources.list.d/misc.list && apt-get update"
+      - run:
+          name: apt-get install
+          command: "apt-get install -y ruby2.5"
+      - run:
+          name: dd
+          command: "dd if=/dev/zero of=test1 bs=1M count=10"
